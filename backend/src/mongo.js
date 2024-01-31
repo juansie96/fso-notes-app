@@ -15,13 +15,6 @@ const uri = `mongodb+srv://pulga666:${password}@cluster-nodejs.rqvnt.mongodb.net
 mongoose.set("strictQuery", false);
 mongoose.connect(uri);
 
-const noteSchema = new mongoose.Schema({
-  content: String,
-  important: Boolean,
-});
-
-const Note = mongoose.model("Note", noteSchema);
-
 Note.find({ important: true }).then((result) => {
   result.forEach((note) => {
     console.log(note);
