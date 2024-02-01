@@ -1,9 +1,9 @@
+require("module-alias/register");
 import { Request, Response } from "express";
 
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import generateId from "@/utils/generateId";
 
 const app = express();
 
