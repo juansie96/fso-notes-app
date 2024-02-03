@@ -13,6 +13,11 @@ const getNote = async (req: Request, res: Response) => {
 
 const createNote = async (req: Request, res: Response) => {
   const { content, important } = req.body;
+  if (!req.body || !content || !important) {
+    return res.status(400).json({
+      error: "Information is missing",
+    });
+  }
   const note = new Note({
     content,
     important,

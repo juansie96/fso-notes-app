@@ -5,17 +5,13 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import dotenv from "dotenv";
+dotenv.config();
+
 import { unknownEndpoint } from "@/middlewares";
 import noteRouter from "@/routes/note";
+import "@/database";
 
-dotenv.config();
 const app = express();
-
-const mongoose = require("mongoose");
-
-mongoose.set("strictQuery", false);
-mongoose.connect(process.env.DATABASE_URL);
-console.log(process.env.DATABASE_URL);
 
 morgan.token("body", (req: Request) => JSON.stringify(req.body));
 app.use(
