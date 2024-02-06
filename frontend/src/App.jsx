@@ -18,6 +18,8 @@ const App = () => {
       })
   }, [])
 
+  // Test
+
   const addNote = (event) => {
     event.preventDefault()
     const noteObject = {
