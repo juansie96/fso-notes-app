@@ -8,18 +8,18 @@ jobs:
     name: Deploy Backend to Fly.io
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '16' # Adjust this to your project's Node.js version
+          node-version: '18' 
       - name: Install and Build Frontend
         run: |
           cd frontend
           npm install
           npm run build
       - name: Copy Frontend Build to Backend
-        run: cp -r frontend/build/* backend/dist/ # Adjust this path based on your project's structure
+        run: cp -r frontend/dist/* backend/dist/
       - name: Install Backend Dependencies and Build
         run: |
           cd backend
@@ -27,7 +27,7 @@ jobs:
           npm run build
       - uses: superfly/flyctl-actions/setup-flyctl@master
         with:
-          version: 'latest' # Ensures you use the latest version of Flyctl
+          version: 'latest'
       - name: Deploy to Fly.io
         run: flyctl deploy --remote-only
         working-directory: ./backend
