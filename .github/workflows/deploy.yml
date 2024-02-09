@@ -9,6 +9,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   deploy:
+    if: ${{ github.event_name == 'push' }}
     name: Deploy Backend to Fly.io
     runs-on: ubuntu-latest
     steps:
