@@ -25,4 +25,4 @@ jobs:
       - name: includes chikorita
         env:
           INCLUDES_CHIKORITA: ${{contains(toJson(github.event.commits.*.message), 'CHIKORITA')}}
-        run: echo "$INCLUDES_CHIKORITA"
+        run: echo "$INCLUDES_CHIKORITA :)"
