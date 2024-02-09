@@ -1,7 +1,5 @@
 name: Testing stuff
 
-# Commit test 1
-
 on:
   push:
     branches:
