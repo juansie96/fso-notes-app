@@ -21,6 +21,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("dist"));
 
+app.get('/version', (_,res) => res.json(1))
 app.use("/api/notes", noteRouter);
 app.use(unknownEndpoint);
 
