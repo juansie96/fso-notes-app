@@ -9,7 +9,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   deploy:
-    if: ${{ github.event_name == 'push' && contains(toJson(github.event.commits.*.message), '#skip') == 'false'}}
+    if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }}
     name: Deploy Backend to Fly.io
     runs-on: ubuntu-latest
     steps:
@@ -39,7 +39,7 @@ jobs:
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
   tag_release:
-    if: ${{ github.event_name == 'push' && contains(toJson(github.event.commits.*.message), '#skip') == 'false'}}
+    if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }}
     needs: [deploy]
     runs-on: ubuntu-latest
     steps:
